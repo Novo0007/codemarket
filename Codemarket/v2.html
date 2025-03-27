@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeMarket - Buy Source Code</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <style>
+
+    </style>
+    <link rel="stylesheet" href="cm.css"/>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">CodeMarket</h1>
+            <button class="menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#marketplace">Marketplace</a></li>
+                    <li><a href="#free-games">Free Games</a></li>
+                    <li><a href="#premium-games">Premium Games</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h2>Buy Or play Quality Source Code & Games</h2>
+                <p>Find the perfect code snippets for your projects with yearly subscription access.</p>
+               
+            </div>
+            <div class="hero-image">
+                <img src="https://media0.giphy.com/media/qEqiI3Oq7vBkoE236M/giphy.webp?cid=ecf05e4770ygk8cvfdvgu37y0c1gtfpfl9xgegi6m1ju1ks9&ep=v1_stickers_search&rid=giphy.webp&ct=ts" alt="Code snippets">
+            </div>
+        </section>
+
+        <section id="marketplace" class="marketplace">
+            <h2>Featured Code Listings</h2>
+            <div class="filters">
+                <select id="category-filter">
+                    <option value="all">All Categories</option>
+                    <option value="web">Web Development</option>
+                    <option value="mobile">Mobile Apps</option>
+                    <option value="game">Game Development</option>
+                    <option value="ai">AI & Machine Learning</option>
+                </select>
+                <select id="language-filter">
+                    <option value="all">All Languages</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="python">Python</option>
+                    <option value="java">Java</option>
+                    <option value="csharp">C#</option>
+                    <option value="php">PHP</option>
+                </select>
+                <select id="price-filter">
+                    <option value="all">All Prices</option>
+                    <option value="free">Free</option>
+                    <option value="paid">Paid</option>
+                </select>
+            </div>
+            <div class="code-listings" id="code-listings">
+                <!-- Code listings will be dynamically inserted here -->
+            </div>
+            <div class="pagination" id="pagination">
+                <!-- Pagination buttons will be inserted here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h3>CodeMarket</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="#web">Web Development</a></li>
+                        <li><a href="#mobile">Mobile Apps</a></li>
+                        <li><a href="#game">Game Development</a></li>
+                        <li><a href="#ai">AI & ML</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 CodeMarket. All rights reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for code details -->
+    <div class="modal" id="code-details-modal">
+        <div class="modal-content code-details-content">
+            <span class="close-btn">&times;</span>
+            <div class="code-details" id="code-details">
+                <!-- Code details will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for purchase status -->
+    <div id="purchase-status-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div id="purchase-status-content">
+                <!-- Content will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for free preview -->
+    <div id="preview-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="preview-container">
+                <iframe class="preview-content" id="preview-frame" allowfullscreen></iframe>
+                <div class="preview-overlay">
+                    <p>This is a limited free preview. Purchase full version for complete access.</p>
+                    <button class="upgrade-btn" id="upgrade-btn">Upgrade Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+       
+    </script>
+    <script src="cm.js"></script>
+
+</body>
+</html>
