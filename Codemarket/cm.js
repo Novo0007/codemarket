@@ -547,7 +547,7 @@
                 {
                     id: 7,
                     title: 'Netflix Free',
-                    yearlyPrice: 299,
+                    yearlyPrice: 999,
                     price: 4999,
                     playUrl: 'https://netfree.cc/mobile/movies',
                     category: 'mobile'
