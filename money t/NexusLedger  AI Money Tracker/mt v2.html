@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cyberpunk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 NexusLedger | AI Money Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <style>
+        
+    </style>
+    
+  <link rel="stylesheet" href="mtv2.css"/>
+</head>
+<body>
+    <div class="container">
+        <!-- Futuristic Header -->
+        <header style="margin-bottom: 30px; text-align: center;">
+            <h1 class="cyber-font neon-text" style="font-size: 2.5rem; margin-bottom: 10px;">🚀 NEXUSLEDGER</h1>
+            <p style="color: var(--terminal-text);">AI-Powered Financial Tracking System</p>
+        </header>
+
+        <!-- AI Assistant Panel -->
+        <div class="ai-assistant">
+            <h3 class="cyber-font" style="color: var(--neon-blue);">
+                <i class="fas fa-robot"></i> NEXUS AI ASSISTANT
+            </h3>
+            <div class="ai-message" id="aiMessage">
+                > System online. Ready to track transactions. Say "Hey Nexus" or type commands.
+            </div>
+            <div class="voice-command">
+                <button class="voice-btn" id="voiceBtn">
+                    <i class="fas fa-microphone"></i>
+                </button>
+                <input type="text" class="cyber-input" id="voiceInput" placeholder="Or type a command...">
+            </div>
+        </div>
+
+        <!-- Main Dashboard -->
+        <div class="cyber-card">
+            <h2 class="cyber-font" style="color: var(--neon-pink); margin-bottom: 20px;">
+                <i class="fas fa-wallet"></i> QUICK TRANSACTION
+            </h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                <div>
+                    <label>Friend's Name</label>
+                    <input type="text" class="cyber-input" id="friendName" placeholder="Who's involved?">
+                </div>
+                <div>
+                    <label>Amount (₹)</label>
+                    <input type="number" class="cyber-input" id="amount" placeholder="0.00">
+                </div>
+                <div>
+                    <label>Type</label>
+                    <select class="cyber-input" id="transactionType">
+                        <option value="gave">I gave money</option>
+                        <option value="took">They took money</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Description</label>
+                    <input type="text" class="cyber-input" id="description" placeholder="Dinner, Loan, etc.">
+                </div>
+            </div>
+            <button class="cyber-button" onclick="addTransaction()" style="margin-top: 20px;">
+                <i class="fas fa-paper-plane"></i> CONFIRM TRANSACTION
+            </button>
+        </div>
+
+        <!-- 3D Interactive Chart -->
+        <div class="cyber-card holographic-display">
+            <h2 class="cyber-font" style="color: var(--matrix-green); margin-bottom: 20px;">
+                <i class="fas fa-chart-network"></i> FINANCIAL HOLOGRAM
+            </h2>
+            <div id="balanceChart"></div>
+        </div>
+
+        <!-- Smart Insights -->
+        <div class="cyber-card">
+            <h2 class="cyber-font" style="color: var(--neon-blue); margin-bottom: 20px;">
+                <i class="fas fa-brain"></i> AI INSIGHTS
+            </h2>
+            <div id="aiInsights">
+                <div class="ai-message">
+                    > Analyzing transaction patterns... (AI will display tips here)
+                </div>
+            </div>
+        </div>
+
+        <!-- Transaction Spreadsheet -->
+        <div class="cyber-card">
+            <h2 class="cyber-font" style="color: var(--cyber-purple); margin-bottom: 20px;">
+                <i class="fas fa-table"></i> TRANSACTION DATABASE
+            </h2>
+            <div style="overflow-x: auto;">
+                <table class="cyber-table">
+                    <thead>
+                        <tr>
+                            <th>DATE</th>
+                            <th>FRIEND</th>
+                            <th>DESCRIPTION</th>
+                            <th>AMOUNT (₹)</th>
+                            <th>STATUS</th>
+                            <th>ACTIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionsBody">
+                        <!-- Transactions load here -->
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <!-- Debt Prediction -->
+        <div class="cyber-card holographic-display">
+            <h2 class="cyber-font" style="color: var(--neon-pink); margin-bottom: 20px;">
+                <i class="fas fa-crystal-ball"></i> DEBT PREDICTION ENGINE
+            </h2>
+            <div id="debtPrediction">
+                <div class="ai-message">
+                    > Predicting future balances based on current trends...
+                </div>
+            </div>
+            <i>NNC TECHNOLOGY</i>
+        </div>
+    </div>
+<script src="mtv2.js"></script>
+    <script>
+       
+    </script>
+</body>
+</html>

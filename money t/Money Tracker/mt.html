@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Friend Money Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        
+    </style>
+
+  <link rel="stylesheet" href="mt.css"/>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-hand-holding-usd"></i> Friend Money Tracker</h1>
+            <div>
+                <button class="btn btn-primary" onclick="exportData()">
+                    <i class="fas fa-file-export"></i> Export Data
+                </button>
+            </div>
+        </header>
+
+        <div class="card">
+            <h2 class="card-title"><i class="fas fa-plus-circle"></i> Add New Transaction</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="friendName">Friend's Name</label>
+                    <input type="text" id="friendName" placeholder="Enter name">
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input type="number" id="amount" placeholder="0.00">
+                </div>
+                <div class="form-group">
+                    <label for="transactionType">Transaction Type</label>
+                    <select id="transactionType">
+                        <option value="gave">I gave this amount</option>
+                        <option value="took">They took this amount</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text" id="description" placeholder="What was it for?">
+                </div>
+            </div>
+            <button class="btn btn-primary" onclick="addTransaction()">
+                <i class="fas fa-save"></i> Add Transaction
+            </button>
+        </div>
+
+        <div class="summary-cards">
+            <div class="summary-card">
+                <i class="fas fa-users"></i>
+                <h3>Total Friends</h3>
+                <div class="amount" id="totalFriends">0</div>
+            </div>
+            <div class="summary-card">
+                <i class="fas fa-hand-holding-usd"></i>
+                <h3>You Gave</h3>
+                <div class="amount negative" id="totalGave">₹0.00</div>
+            </div>
+            <div class="summary-card">
+                <i class="fas fa-hand-holding"></i>
+                <h3>They Took</h3>
+                <div class="amount positive" id="totalTook">₹0.00</div>
+            </div>
+            <div class="summary-card">
+                <i class="fas fa-balance-scale"></i>
+                <h3>Net Balance</h3>
+                <div class="amount" id="netBalance">₹0.00</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title"><i class="fas fa-table"></i> All Transactions</h2>
+            <div class="table-responsive">
+                <table id="transactionsTable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Friend</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Type</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionsBody">
+                        <!-- Transactions will be added here -->
+                    </tbody>
+                </table>
+                <div id="noTransactions" class="no-transactions">
+                    <i class="fas fa-info-circle" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                    <p>No transactions recorded yet. Add your first transaction above.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title"><i class="fas fa-chart-pie"></i> Balances by Friend</h2>
+            <div class="friend-balances" id="friendBalances">
+                <!-- Friend balances will be added here -->
+            </div>
+            <i>NNC TECHNOLOGY</i>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        
+    </script>
+    <script src="mt.js"></script>
+
+</body>
+</html>
