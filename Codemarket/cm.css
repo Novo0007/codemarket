@@ -791,3 +791,112 @@ footer {
 .social-icons a:hover {
     color: var(--primary-color);
 }
+
+
+
+
+ /* FAB Container */
+    .fab-container {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 15px;
+        z-index: 1000;
+    }
+
+    /* Main FAB */
+    .fab-main {
+        width: 60px;
+        height: 60px;
+        background-color: var(--primary);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        border: none;
+        cursor: pointer;
+        transition: var(--transition);
+        z-index: 1001;
+    }
+
+    /* Sub FABs */
+    .fab-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        margin-bottom: 15px;
+        pointer-events: none;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: var(--transition);
+    }
+
+    .fab-action {
+        width: 50px;
+        height: 50px;
+        background-color: var(--dark);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        transition: var(--transition);
+        text-decoration: none;
+    }
+
+    /* Show actions when active */
+    .fab-container.active .fab-actions {
+        pointer-events: auto;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Hover effects */
+    .fab-main:hover, .fab-action:hover {
+        transform: translateY(-3px) scale(1.1);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Different colors for actions */
+    .fab-action:nth-child(1) { background-color: #3a86ff; } /* Website */
+    .fab-action:nth-child(2) { background-color: #8338ec; } /* Scroll to top */
+    .fab-action:nth-child(3) { background-color: #ff006e; } /* Add friend */
+    .fab-action:nth-child(4) { background-color: #fb5607; } /* Email */
+    .fab-action:nth-child(5) { background-color: #00b4d8; } /* Phone */
+
+    /* Tooltip styles */
+    .fab-action::after {
+        content: attr(title);
+        position: absolute;
+        right: 70px;
+        background: var(--dark);
+        color: white;
+        padding: 5px 10px;
+        border-radius: var(--border-radius);
+        font-size: 0.8rem;
+        white-space: nowrap;
+        opacity: 0;
+        transition: var(--transition);
+        pointer-events: none;
+    }
+    
+    .fab-action:hover::after {
+        opacity: 1;
+        right: 60px;
+    }
+
+    /* Animation for main FAB */
+    .fab-container.active .fab-main {
+        transform: rotate(135deg);
+        background-color: var(--danger);
+    }
+
