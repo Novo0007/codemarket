@@ -8,10 +8,52 @@
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <style>
 
+
     </style>
     <link rel="stylesheet" href="cm.css"/>
 </head>
 <body>
+
+
+
+    <!-- Add this just before </body> -->
+<div class="fab-container">
+    <!-- Main FAB button -->
+    <button class="fab-main" id="fabMain" title="Quick Actions">
+        <i class="fa-duotone fa-solid fa-bolt fa-beat"></i>
+    </button>
+    
+    <!-- Sub FAB buttons -->
+    <div class="fab-actions">
+        <!-- Custom External Links -->
+        <a href="https://novo0007.github.io/codemarket/money%20t/Money%20Tracker/mt.html" target="_blank" class="fab-action" title="money">
+            <i class="fa-duotone fa-solid fa-money-check-dollar"></i>
+        </a>
+        <a href="go:T1" target="_blank" class="fab-action" title="Zappy">
+            <i class="fa-duotone fa-solid fa-store fa-beat-fade"></i>        </a>
+        
+        <!-- Internal Page Navigation -->
+        <a href="#top" class="fab-action" title="Scroll to Top">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+        
+        <!-- Function Triggers -->
+        <a href="#" class="fab-action" title="Add Friend" id="fabAddFriend">
+            <i class="fas fa-user-plus"></i>
+        </a>
+        
+        <!-- Email Trigger -->
+        <a href="mailto:support@example.com" class="fab-action" title="Contact Support">
+            <i class="fas fa-envelope"></i>
+        </a>
+        
+        <!-- Phone Trigger (for mobile) -->
+        <a href="tel:+1234567890" class="fab-action" title="Call Us">
+            <i class="fas fa-phone"></i>
+        </a>
+    </div>
+</div>
+
     <header>
         <div class="container">
             <h1 class="logo">CodeMarket</h1>
@@ -151,7 +193,7 @@
     </div>
 
     <script>
-       
+
     </script>
     <script src="cm.js"></script>
 
