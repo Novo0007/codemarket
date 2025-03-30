@@ -1,4 +1,28 @@
-// Load transactions from localStorage or initialize empty array
+
+    // Toggle FAB actions
+    document.getElementById('fabMain').addEventListener('click', function() {
+        document.querySelector('.fab-container').classList.toggle('active');
+    });
+
+    // Custom action for "Add Friend" button
+    document.getElementById('fabAddFriend').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector('.fab-container').classList.remove('active');
+        document.getElementById('friendName').focus();
+    });
+
+    // Close menu when clicking anywhere else
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.fab-container')) {
+            document.querySelector('.fab-container').classList.remove('active');
+        }
+    });
+
+
+
+
+
+        // Load transactions from localStorage or initialize empty array
         let transactions = JSON.parse(localStorage.getItem('friendTransactions')) || [];
         
         // Display transactions when page loads
