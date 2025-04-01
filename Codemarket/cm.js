@@ -57,7 +57,7 @@
                     price: 199999,
                     yearlyPrice: 9999,
                     author: 'gilles',
-                    image: 'https://media2.giphy.com/media/BeFskdG0tJzqyYxPxL/giphy.webp?cid=790b7611iwcqqpdb2vw9a4x118x4z0lgsmlkn55ck4d7e5yz&ep=v1_gifs_search&rid=giphy.webp&ct=g',
+                    image: 'https://media1.giphy.com/media/q7QvAdG79mxkASNMzY/giphy.webp?cid=ecf05e47tgle60tf8smcdv83m7lvf21q3owrw3b4t3w3ywlj&ep=v1_gifs_search&rid=giphy.webp&ct=g',
                     features: [
                         'React Native source code',
                         '1 year of updates',
@@ -77,7 +77,7 @@
                     price: 122999,
                     yearlyPrice: 999,
                     author: 'NNC',
-                    image: 'https://media3.giphy.com/media/CccEJ1t9STE5vA5F7E/200.webp?cid=ecf05e47odcbsez9f15obm4nf762jf4gjfhagc4aqhz3lhus&ep=v1_gifs_search&rid=200.webp&ct=g',
+                    image: 'https://media0.giphy.com/media/X5Lta1bjuULTubmGzR/giphy.webp?cid=ecf05e47tgle60tf8smcdv83m7lvf21q3owrw3b4t3w3ywlj&ep=v1_gifs_search&rid=giphy.webp&ct=g',
                     features: [
                         'Python script with Jupyter notebook',
                         '1 year of updates',
