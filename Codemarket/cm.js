@@ -66,7 +66,7 @@
                     ],
                     playUrl: 'https://microstudio.io/gilles/pixelartcamera/',
                     previewUrl: 'https://microstudio.io/gilles/pixelartcamera/',
-                    isFree: false
+                    isFree: true
                 },
                 {
                     id: 3,
