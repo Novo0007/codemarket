@@ -64,8 +64,8 @@
                         'Basic support',
                         'MIT License'
                     ],
-                    playUrl: 'https://microstudio.io/gilles/pixelartcamera/',
-                    previewUrl: 'https://microstudio.io/gilles/pixelartcamera/',
+                    playUrl: 'https://novo0007.github.io/pixelartcamera/pixelartcamera/index.html',
+                    previewUrl: 'https://novo0007.github.io/pixelartcamera/pixelartcamera/index.html',
                     isFree: true
                 },
                 {
@@ -536,7 +536,7 @@
                     title: 'Pixel Art Camera',
                     yearlyPrice: 9999,
                     price: 199999,
-                    playUrl: 'https://microstudio.io/gilles/pixelartcamera/',
+                    playUrl: 'https://novo0007.github.io/pixelartcamera/pixelartcamera/index.html',
                     category: 'mobile'
                 },
                 {
