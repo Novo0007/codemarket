@@ -1,35 +1,16 @@
-
-    // Toggle FAB actions
-    document.getElementById('fabMain').addEventListener('click', function() {
-        document.querySelector('.fab-container').classList.toggle('active');
-    });
-
-    // Custom action for "Add Friend" button
-    document.getElementById('fabAddFriend').addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector('.fab-container').classList.remove('active');
-        document.getElementById('friendName').focus();
-    });
-
-    // Close menu when clicking anywhere else
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.fab-container')) {
-            document.querySelector('.fab-container').classList.remove('active');
-        }
-    });
-
-
-
-
-
-        // Load transactions from localStorage or initialize empty array
+// Load transactions from localStorage or initialize empty array
         let transactions = JSON.parse(localStorage.getItem('friendTransactions')) || [];
+        let currentFilter = 'all';
+        let currentSearchTerm = '';
         
         // Display transactions when page loads
         document.addEventListener('DOMContentLoaded', function() {
             renderTransactions();
             updateSummary();
             renderFriendBalances();
+            
+            // Initialize filter highlighting
+            updateFilterHighlight();
         });
         
         // Add a new transaction
@@ -100,21 +81,30 @@
             
             noTransactions.style.display = 'none';
             
-            // Sort by date (newest first)
-            const sortedTransactions = [...transactions].sort((a, b) => b.id - a.id);
+            // Filter transactions based on current filter and search term
+            let filteredTransactions = filterAndSearchTransactions();
             
-            sortedTransactions.forEach(transaction => {
+            // Sort by date (newest first)
+            filteredTransactions.sort((a, b) => b.id - a.id);
+            
+            filteredTransactions.forEach((transaction, index) => {
                 const row = document.createElement('tr');
                 
+                // Highlight search matches
+                const friendName = highlightSearchMatches(transaction.friendName);
+                const description = highlightSearchMatches(transaction.description);
+                const amount = highlightSearchMatches(transaction.amount.toString());
+                
                 row.innerHTML = `
+                    <td>${index + 1}</td>
                     <td>${transaction.date}</td>
                     <td>
                         <div class="friend-avatar">${transaction.friendName.charAt(0).toUpperCase()}</div>
-                        ${transaction.friendName}
+                        ${friendName}
                     </td>
-                    <td>${transaction.description}</td>
+                    <td>${description}</td>
                     <td class="${transaction.transactionType === 'gave' ? 'negative' : 'positive'}">
-                        ₹${transaction.amount.toFixed(2)}
+                        ₹${amount}
                     </td>
                     <td>
                         <span class="badge ${transaction.transactionType === 'gave' ? 'badge-danger' : 'badge-success'}">
@@ -130,6 +120,57 @@
                 
                 tbody.appendChild(row);
             });
+        }
+        
+        // Filter and search transactions
+        function filterAndSearchTransactions() {
+            let filteredTransactions = [...transactions];
+            
+            // Apply type filter
+            if (currentFilter === 'gave') {
+                filteredTransactions = filteredTransactions.filter(t => t.transactionType === 'gave');
+            } else if (currentFilter === 'took') {
+                filteredTransactions = filteredTransactions.filter(t => t.transactionType === 'took');
+            } else if (currentFilter === 'net') {
+                // For net balance, we'll show all transactions but highlight the net effect
+                filteredTransactions = [...transactions];
+            }
+            
+            // Apply search term if it exists
+            if (currentSearchTerm) {
+                const searchTerm = currentSearchTerm.toLowerCase();
+                filteredTransactions = filteredTransactions.filter(transaction => 
+                    transaction.friendName.toLowerCase().includes(searchTerm) ||
+                    transaction.description.toLowerCase().includes(searchTerm) ||
+                    transaction.amount.toString().includes(searchTerm)
+                );
+            }
+            
+            return filteredTransactions;
+        }
+        
+        // Highlight search matches in text
+        function highlightSearchMatches(text) {
+            if (!currentSearchTerm) return text;
+            
+            const searchTerm = currentSearchTerm.toLowerCase();
+            const lowerText = text.toLowerCase();
+            const startIndex = lowerText.indexOf(searchTerm);
+            
+            if (startIndex === -1) return text;
+            
+            const endIndex = startIndex + searchTerm.length;
+            const before = text.substring(0, startIndex);
+            const match = text.substring(startIndex, endIndex);
+            const after = text.substring(endIndex);
+            
+            return `${before}<span class="highlight">${match}</span>${after}`;
+        }
+        
+        // Search transactions
+        function searchTransactions() {
+            currentSearchTerm = document.getElementById('searchInput').value.trim();
+            renderTransactions();
         }
         
         // Update the summary section
@@ -230,11 +271,11 @@
             }
             
             // Create CSV header
-            let csv = 'Date,Friend,Description,Amount,Type\n';
+            let csv = 'No.,Date,Friend,Description,Amount,Type\n';
             
             // Add transactions to CSV
-            transactions.forEach(transaction => {
-                csv += `"${transaction.date}","${transaction.friendName}","${transaction.description}",${transaction.amount},"${transaction.transactionType === 'gave' ? 'You gave' : 'They took'}"\n`;
+            transactions.forEach((transaction, index) => {
+                csv += `${index + 1},"${transaction.date}","${transaction.friendName}","${transaction.description}",${transaction.amount},"${transaction.transactionType === 'gave' ? 'You gave' : 'They took'}"\n`;
             });
             
             // Create download link
@@ -247,3 +288,68 @@
             link.click();
             document.body.removeChild(link);
         }
+        
+        // Filter transactions by type
+        function filterTransactions(type) {
+            currentFilter = type;
+            renderTransactions();
+            updateFilterHighlight();
+        }
+        
+        // Update filter highlight
+        function updateFilterHighlight() {
+            // Remove active class from all cards and buttons
+            document.querySelectorAll('.summary-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            document.querySelectorAll('.filter-buttons .btn').forEach(btn => {
+                btn.classList.remove('btn-primary');
+                btn.classList.add('btn-info');
+            });
+            
+            // Add active class to current filter card and button
+            if (currentFilter === 'all') {
+                document.getElementById('totalFriendsCard').classList.add('active');
+                document.querySelector('.filter-buttons .btn:nth-child(1)').classList.remove('btn-info');
+                document.querySelector('.filter-buttons .btn:nth-child(1)').classList.add('btn-primary');
+            } else if (currentFilter === 'gave') {
+                document.getElementById('totalGaveCard').classList.add('active');
+                document.querySelector('.filter-buttons .btn:nth-child(2)').classList.remove('btn-info');
+                document.querySelector('.filter-buttons .btn:nth-child(2)').classList.add('btn-primary');
+            } else if (currentFilter === 'took') {
+                document.getElementById('totalTookCard').classList.add('active');
+                document.querySelector('.filter-buttons .btn:nth-child(3)').classList.remove('btn-info');
+                document.querySelector('.filter-buttons .btn:nth-child(3)').classList.add('btn-primary');
+            } else if (currentFilter === 'net') {
+                document.getElementById('netBalanceCard').classList.add('active');
+                document.querySelector('.filter-buttons .btn:nth-child(4)').classList.remove('btn-info');
+                document.querySelector('.filter-buttons .btn:nth-child(4)').classList.add('btn-primary');
+            }
+        }
+        
+        // Scroll to element
+        function scrollToElement(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Toggle FAB actions
+        document.getElementById('fabMain').addEventListener('click', function() {
+            document.querySelector('.fab-container').classList.toggle('active');
+        });
+
+        // Custom action for "Add Friend" button
+        document.getElementById('fabAddFriend').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('.fab-container').classList.remove('active');
+            document.getElementById('friendName').focus();
+        });
+
+        // Close menu when clicking anywhere else
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.fab-container')) {
+                document.querySelector('.fab-container').classList.remove('active');
+            }
+        });
